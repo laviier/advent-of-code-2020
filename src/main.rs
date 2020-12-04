@@ -1,8 +1,8 @@
 extern crate lazy_static;
 extern crate regex;
 
-mod day02;
-use day02::solution;
+mod day03;
+use day03::solution;
 
 fn main() {
     println!("{:?}", solution());
