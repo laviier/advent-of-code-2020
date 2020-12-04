@@ -38,7 +38,7 @@ fn is_field_valid(field_name: &str, field_value: &str) -> bool {
     //part-1 - no validation - 206
     //return true;
 
-    //part-2
+    //part-2 - 123
     //byr (Birth Year) - four digits; at least 1920 and at most 2002.
     if field_name == "byr" {
         if !is_number_valid(&field_value, 1920, 2002) {
@@ -139,6 +139,5 @@ fn valid_doc(doc_input: &Vec<String>) -> usize {
 
 pub fn solution() -> usize {
     let doc_input = read_file_to_vec();
-    // part 1
     return valid_doc(&doc_input);
 }
