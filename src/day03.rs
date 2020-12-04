@@ -43,7 +43,7 @@ pub fn solution() -> usize {
     // part 1 - 294
     // return get_tree_count(&tree_input, &3, &1);
 
-    // part 2
+    // part 2 - 5774564250
     return [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
         .iter()
         .fold(1, |result, (x, y)| result * get_tree_count(&tree_input, x, y));
