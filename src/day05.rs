@@ -1,23 +1,8 @@
-use std::fs::File;
-use std::io::{BufRead, BufReader};
+use crate::file_util::read_file_to_string;
 use std::ops::RangeInclusive;
 
 static ROW_RANGE: RangeInclusive<usize> = 0..=127;
 static COL_RANGE: RangeInclusive<usize> = 0..=7;
-
-fn read_file_to_vec() -> Vec<String> {
-    let filename = "input/day05";
-    let file = File::open(filename).unwrap();
-    let reader = BufReader::new(file);
-
-    let mut vec = Vec::new();
-
-    for (_index, line) in reader.lines().enumerate() {
-        vec.push(line.unwrap());
-    }
-
-    return vec;
-}
 
 fn calculate_seat_id(seat_input: &String) -> usize{
     let row_input = seat_input[..7].to_string();
@@ -87,13 +72,13 @@ fn find_missing_seat(num_list: Vec<usize>) -> usize {
 }
 
 pub fn solution() -> usize {
-    let input = read_file_to_vec();
+    let input = read_file_to_string("input/day05");
 
     //part 1 - 959
     //let max = input.iter().map(|s| calculate_seat_id(&s)).max();
     //return max.unwrap();
 
-    //part 1 - 527
+    //part 2 - 527
     let mut seat_id_list: Vec<usize> = input.iter().map(|s| calculate_seat_id(&s)).collect();
     seat_id_list.sort();
     return find_missing_seat(seat_id_list);
