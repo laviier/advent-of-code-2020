@@ -1,33 +1,7 @@
-use regex::Regex;
+use crate::file_util::read_file_to_string_by_new_line;
 use std::collections::HashMap;
 use std::collections::HashSet;
-use std::fs::File;
-use std::io::{BufRead, BufReader};
-
-fn read_file_to_vec() -> Vec<String> {
-    let filename = "input/day04";
-    let file = File::open(filename).unwrap();
-    let reader = BufReader::new(file);
-
-    let (mut vec, mut doc) = (Vec::new(), String::new());
-
-    for (_index, line) in reader.lines().enumerate() {
-        let line = line.unwrap().to_string();
-
-        if line.trim().is_empty() && !doc.trim().is_empty() {
-            vec.push(doc);
-            doc = String::new();
-        } else if !line.trim().is_empty() {
-            doc += &(" ".to_string().to_owned() + &line);
-        }
-    }
-
-    if !doc.trim().is_empty() {
-        vec.push(doc.trim().to_string());
-    }
-
-    return vec;
-}
+use regex::Regex;
 
 fn is_doc_valid(valid_fields_len: usize, valid_fields_present: usize, has_cid: usize) -> bool {
     return valid_fields_present == valid_fields_len ||
@@ -138,6 +112,6 @@ fn valid_doc(doc_input: &Vec<String>) -> usize {
 }
 
 pub fn solution() -> usize {
-    let doc_input = read_file_to_vec();
+    let doc_input = read_file_to_string_by_new_line("input/day04" , " ");
     return valid_doc(&doc_input);
 }
