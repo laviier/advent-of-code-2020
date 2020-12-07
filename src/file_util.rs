@@ -9,7 +9,7 @@ pub fn read_file_to_usize(filename: &str) -> Vec<usize> {
     let mut vec = Vec::new();
 
     // Read the file line by line using the lines() iterator from std::io::BufRead.
-    for (index, line) in reader.lines().enumerate() {
+    for (_index, line) in reader.lines().enumerate() {
         let line = line.unwrap(); // Ignore errors.
         // Show the line and its number.
         //println!("{}", line);
@@ -28,7 +28,7 @@ pub fn read_file_to_string(filename: &str) -> Vec<String> {
     let mut vec = Vec::new();
 
     // Read the file line by line using the lines() iterator from std::io::BufRead.
-    for (index, line) in reader.lines().enumerate() {
+    for (_index, line) in reader.lines().enumerate() {
         vec.push(line.unwrap());
     }
 
